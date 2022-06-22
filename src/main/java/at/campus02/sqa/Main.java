@@ -1,28 +1,15 @@
 package at.campus02.sqa;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayDeque;
 import java.util.Scanner;
 
-public class Queue {
-
-    static ArrayDeque<String> queue = new ArrayDeque<>();
+public class Main {
 
     public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
-        URL filePath = Queue.class.getResource("/items.txt");
-        assert filePath != null;
-        File initF = new File(filePath.toURI());
-
-        Scanner items = new Scanner(initF);
-        while (items.hasNext()) {
-            queue.add(items.nextLine());
-        }
+        CustomQueue queue = CustomQueue.fromResource("/items.txt");
 
         Scanner input = new Scanner(System.in);
-    InputLoop:
         while (true) {
             System.out.print(": ");
             String line = input.nextLine();
@@ -36,9 +23,9 @@ public class Queue {
                     }
                     break;
                 case "q":
-                    break InputLoop;
+                    return;
                 default:
-                    queue.add(line);
+                    queue.push(line);
                     break;
             }
         }
