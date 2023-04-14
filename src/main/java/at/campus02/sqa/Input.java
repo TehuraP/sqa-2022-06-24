@@ -20,12 +20,7 @@ public class Input {
             String line = input.nextLine();
             switch (line) {
                 case "n":
-                    if (queue.isEmpty()) {
-                        out.println("Queue is empty");
-                    } else {
-                        String item = queue.pop();
-                        out.println("> " + item);
-                    }
+                    nextItem(queue);
                     break;
                 case "q":
                     return;
@@ -33,6 +28,15 @@ public class Input {
                     queue.push(line);
                     break;
             }
+        }
+    }
+
+    private void nextItem(CustomQueue queue) {
+        if (queue.isEmpty()) {
+            out.println("Queue is empty");
+        } else {
+            String item = queue.pop();
+            out.println("> " + item);
         }
     }
 }
