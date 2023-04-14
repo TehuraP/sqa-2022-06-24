@@ -31,7 +31,7 @@ public class Input {
         }
     }
 
-    private void nextItem(CustomQueue queue) {
+    void nextItem(CustomQueue queue) {
         if (queue.isEmpty()) {
             out.println("Queue is empty");
         } else {
